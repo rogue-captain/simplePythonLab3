@@ -29,20 +29,23 @@ nums = [0,1,2,3,4,5]
 turnCounter = 0
 numbers = 0
 
+gradeCounter = 0
+
 ################################ VARIABLES ####################################
 
 #A
 #Q3 2.8
 
-for n in range(0,5):
+for n in range(0,6):
     print(n, end=' ')
     
-print()
-print()
+print()#spacer
+print()#spacer
 
-while turnCounter <10:
+while turnCounter < 6:
+    
+    print(numbers, end=' ')
     numbers+=1
-    print(numbers)
     turnCounter+=1 
     
     
@@ -65,78 +68,46 @@ for n in nums:
 ###############################################################################
 ###############################################################################
 ###############################################################################
+print()
+print()
 
 #B
 name = input("enter your name please ") #collects string for user name
 
-#array variable to collect and store 3 number grade inputs as string then we convert to integer, 
-#first there is a message to enter 3 number grades, 
-#[Int] specifies data type of array,.split() function uses space as delimiter to differentiate the 3 numbers
-#"[int(num) for num in" this code snippet is a list comprehension that loops through elements in array and 
-#converts the string elements into integers
-
-while True: #while loop to ensure checks are run and user re-prompted
-
-    num_Input = [int(num) for num in input
-                 ("please enter 3 number grades (0-100) seperated by spaces ").split()] 
+while gradeCounter < 5: #while loop to ensure checks are run and user re-prompted
     
-    #this is a if else check to verify user has inputted exactly 3 numbers
-    if len(num_Input) != 3:
-        print("ERROR: enter EXACTLY 3 number grades ranging from 0-100 and seperated by a space")
+  
+    #this is a if else check to verify user has inputted a number
+    try:
+        gradeInput = int(input("Enter your grade. "))
         
-    elif not all(0 <= num <= 100 for num in num_Input):
-        print("ERROR: Enter grades ranging from 0-100 only.")
-        
-    else:
-                
-            print("you entered: ", num_Input)
+        if not (0 <= gradeInput <= 100):
+            print("ERROR: Enter grades ranging from 0-100 only.")
             
-            gradeSum = sum(num_Input) # sum using array and sum function
-            
-            gradeAverage = (sum(num_Input)/len(num_Input))
-            
-            gradeMaximum = num_Input[0]
-            
-            gradeMinimum = num_Input[0]
-            
-            gradeRange = max(num_Input) - min(num_Input)
-            
-            for num in num_Input:
-                
-                if num > gradeMaximum:
-                    gradeMaximum = num
+        else:
                     
-                if num < gradeMinimum:
-                        gradeMinimum = num
-                        
-            
-            
-            ############################ END VARIABLES ####################################
-            
-            print(name, ", Your grade sum = ", gradeSum,
-                  ", grade average = ", gradeAverage, 
-                  ", grade range = ", gradeRange)
-            
+                print("you entered: ", gradeInput)
+    
                 
-            # Output the results
-            print("Maximum grade number is:", gradeMaximum)
-            
-            print("Minimum grade number is:", gradeMinimum)
-            
-            # Determine and print the letter grade based on the average
-            if gradeAverage >= 90:
-                print("Your grade is A")
+    
                 
-            elif gradeAverage >= 80:
-                print("Your grade is B")
+                # Determine and print the letter grade based on the average
+                if gradeInput >= 60:
+                    if gradeInput >= 90:
+                        print(name, "Your grade is A")
+                    elif gradeInput >= 80:
+                        print(name, "Your grade is B")
+                    elif gradeInput >= 70:
+                        print(name, "Your grade is C")
+                    else:
+                        print(name, "Your grade is D")
+                else:
+                    print(name, "Your grade is F, you have FAILED")
+
+                    
+                gradeCounter += 1
+                    
+    except ValueError:
+        print("ERROR: Enter grades ranging from 0-100 only.")
                 
-            elif gradeAverage >= 70:
-                print("Your grade is C")
                 
-            elif gradeAverage >= 60:
-                print("Your grade is D")
-                
-            else:
-                print("Your grade is F, you have FAILED")
-            
-            break
