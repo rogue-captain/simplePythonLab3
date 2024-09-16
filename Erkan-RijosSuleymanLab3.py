@@ -23,16 +23,31 @@ Created on Sun Sep 15 20:27:33 2024
 
 ################################ VARIABLES ####################################
 
+#array of integers
+nums = [0,1,2,3,4,5]
+
+turnCounter = 0
+numbers = 0
+
 ################################ VARIABLES ####################################
 
 #A
 #Q3 2.8
 
-#array of integers
-nums = [0,1,2,3,4,5]
+for n in range(0,5):
+    print(n, end=' ')
+    
+print()
+print()
 
-#for n in n:
-#    print()
+while turnCounter <10:
+    numbers+=1
+    print(numbers)
+    turnCounter+=1 
+    
+    
+print()
+print()
 
 #header of the chart
 print(f"{'Integer':>10}\t\t{'Squared':>10}\t\t{'Cubed':>10}")
